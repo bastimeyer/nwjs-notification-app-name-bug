@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>NW.js notification</title>
+</head>
+<body>
+<button id="trigger">New Notification</button>
+<script>
+const { resolve } = require("path");
+let id = 1;
+document.querySelector("#trigger").addEventListener("click", e => {
+	window.chrome.notifications.create( String( id++ ), {
+		type: "basic",
+		title: "title",
+		message: "body",
+		iconUrl: `file://${resolve("./icon.png")}`
+	});
+});
+</script>
+</body>
